@@ -7,6 +7,12 @@ Testing with task lighting in current shop space. (1 overhead, 1 task light, 1 f
 
 ## Plans
 
+### Create Developer User
+- bridgeIP/debug/clip.html
+- bridge/api
+- Body: {"devicetype": "my_hue_app#browser username"}
+- Press Button first 
+
 #### Start
 - [ ] Find Bridge using UPNP SSDP
 - [ ] Sync/link Save Bridge IP

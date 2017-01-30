@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Philips Hue Web App</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- light switch on/off -->
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+  </head>
+  <body>
+<div class="container">
+  <h1>Philips Hue Web App</h1>
+
+
+      <p>Added Jquery commands to test how light data worked.
+        <br> Will work on creating dynamics in Angular2 MVC</p>
+        <br>
+        <br>
+
+        <h3>Light 1</h3>
+        <input id="Light1" type="checkbox" checked data-toggle="toggle" data-size="large" data-onstyle="info" data-offstyle="danger">
+        <hr>
+        <button id="getData">Return Light 1 State </button>
+        <div id="data"></div>
+</div>
+
+
+  <script>
+  //Make sure Light is off on page load
+  //Will look to add dynamic 'checks' later
+
+  $('#Light1').removeAttr('checked');
+  $.ajax({
+       type: "PUT",
+       url: "http://192.168.1.107/api/nbEypJkH8KItw3APB3Ci2YIB6t48vW15j6qXBzpm/lights/1/state",
+       dataType: 'json',
+       contentType: 'application/json',
+       data:  JSON.stringify({"on": false}),
+       success: function(data, response){
+         console.log(response);
+         console.log("turning Light1 Off!");
+       }
+    });
+  $(document).ready(function() {
+
+      $('#Light1').change(function() {
+          if($(this).is(":checked")) {
+              $.ajax({
+               type: "PUT",
+               url: "http://192.168.1.107/api/nbEypJkH8KItw3APB3Ci2YIB6t48vW15j6qXBzpm/lights/1/state",
+               dataType: 'json',
+               contentType: 'application/json',
+               data:  JSON.stringify({"on": true}),
+               success: function(data, response){
+                 console.log(response);
+                 console.log("turning Light1 Off!");
+               }
+            });
+          }
+
+          else{
+            $.ajax({
+             type: "PUT",
+             url: "http://192.168.1.107/api/nbEypJkH8KItw3APB3Ci2YIB6t48vW15j6qXBzpm/lights/1/state",
+             dataType: 'json',
+             contentType: 'application/json',
+             data:  JSON.stringify({"on": false}),
+             success: function(data, response){
+               console.log(response);
+               console.log("turning Light1 Off!");
+             }
+          });
+        }//Else
+
+      });//If button toggled
+  });//DocumentReady
+
+$("#getData").click(function(){
+  $.ajax({
+   type: "GET",
+   url: "http://192.168.1.107/api/nbEypJkH8KItw3APB3Ci2YIB6t48vW15j6qXBzpm/lights/1",
+   dataType: 'json',
+   contentType: 'application/json',
+   success: function(data, response){
+     str = JSON.stringify(data);
+     console.log(str);
+     $("#data").append(str);
+     $("#data").append("<br><br>");
+   }
+ })
+});
+
+
+   </script>
+  </body>
+</html>
