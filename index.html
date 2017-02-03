@@ -3,19 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Philips Hue Web App</title>
-
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
     <link rel="stylesheet" href="main.css">
-    <!-- light switch on/off -->
-    <!-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> -->
+
   </head>
   <body>
 <div class="container">
@@ -26,14 +19,26 @@
         <br>
 
         <h1>Stand Alone Test</h1>
-        <h3>Light 1 Test</h3>
+        <div id="colorBar">
+              <h3 id="testLightName">Light 1 Test </h3>
+              <label class="switch">
+                <input id="Test1" type="checkbox" checked>
+                <div class="slider"></div>
+              </label>
+        </div>
         <!-- <input id="Test1" type="checkbox" checked data-toggle="toggle" data-size="large" data-onstyle="info" data-offstyle="danger"> -->
 
-        <label class="switch">
+        <!-- <label class="switch">
           <input id="Test1" type="checkbox" checked>
           <div class="slider"></div>
-        </label>
+        </label> -->
+        <!-- <div id="selectedColor"></div> -->
 
+        <svg class="bulbSVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 370"><path class="bulbPath" d="M15 20.5c0 .276-.224.5-.5.5h-5c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h5c.276 0 .5.224.5.5zm-.5-2.5h-5c-.276 0-.5.224-.5.5s.224.5.5.5h5c.276 0 .5-.224.5-.5s-.224-.5-.5-.5zm-3.799 5.659c.19.216.465.341.752.341h1.094c.287 0 .562-.125.752-.341l1.451-1.659h-5.5l1.451 1.659zm8.299-16.925c0 4.164-3.75 6.98-3.75 10.266h-6.5c0-3.286-3.75-6.103-3.75-10.266 0-4.343 3.498-6.734 6.996-6.734 3.502 0 7.004 2.394 7.004 6.734zm-7.719-3.015l-.219-1.177c-2.017.373-3.258 1.851-3.517 3.846l1.188.154c.116-.9.602-2.463 2.548-2.823z"/></svg></div>
+https://css-tricks.com/scale-svg/
+        <div class=centerFlex>
+          <div id="colorWheelDemo"></div>
+        </div>
 
         <hr>
 
@@ -46,6 +51,16 @@
 </div>
 
 
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Color Wheel -->
+<script src="iro.min.js"></script>
+<script src="app.colorwheel.js"></script>
+
+
+<!-- Test API Scripts  -->
   <script>
   "use strict";
   //Make sure Light is off on page load

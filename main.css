@@ -1,3 +1,35 @@
+body{
+  background-color:black;
+  color:white;
+}
+button, input[type="button"]{
+  color:black;
+}
+
+#colorBar{
+  display:flex;
+  margin-bottom:2em;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom:2px solid white;
+}
+
+#selectedColor{
+  width:320px;
+  margin:0 auto;
+  margin-bottom:2em;
+  height:2em;
+  background-color:#fff;
+  content: " ";
+  border-radius:20px;
+}
+
+.bulbPath{
+  width:50px;
+  height: 50px;
+  fill:white;
+}
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -46,4 +78,9 @@ input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
+}
+
+.centerFlex{
+  display:flex;
+  justify-content:center;
 }
