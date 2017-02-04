@@ -14,13 +14,51 @@ $.ajax({
      }
   });
 
-  //Stand Alone Test
+
+  // //Stand Alone Test
+  // $(document).ready(function() {
+  //     $('#Test1').change(function() {
+  //         if($(this).is(":checked")) {
+  //             $.ajax({
+  //              type: "PUT",
+  //              url: "http://192.168.1.107/api/nbEypJkH8KItw3APB3Ci2YIB6t48vW15j6qXBzpm/lights/1/state",
+  //              dataType: 'json',
+  //              contentType: 'application/json',
+  //              data:  JSON.stringify({"on": true}),
+  //              success: function(data, response){
+  //                console.log(response);
+  //                console.log("turning Test1 ON!");
+  //              }
+  //           });
+  //         }
+  //
+  //         else{
+  //           $.ajax({
+  //            type: "PUT",
+  //            url: "http://192.168.1.107/api/nbEypJkH8KItw3APB3Ci2YIB6t48vW15j6qXBzpm/lights/1/state",
+  //            dataType: 'json',
+  //            contentType: 'application/json',
+  //            data:  JSON.stringify({"on": false}),
+  //            success: function(data, response){
+  //              console.log(response);
+  //              console.log("turning Test1 Off!");
+  //            }
+  //         });
+  //       }//Else
+  //
+  //     });//If button toggled
+  // });//DocumentReady
+
+
+  //Dynamic Get BridgeURL and USERNAME TEST
   $(document).ready(function() {
       $('#Test1').change(function() {
+        var testURL = "http://192.168.1.107/api/" + username + "/lights/1/state";
+        console.log(testURL);
           if($(this).is(":checked")) {
               $.ajax({
                type: "PUT",
-               url: "http://192.168.1.107/api/nbEypJkH8KItw3APB3Ci2YIB6t48vW15j6qXBzpm/lights/1/state",
+               url: testURL,
                dataType: 'json',
                contentType: 'application/json',
                data:  JSON.stringify({"on": true}),
@@ -34,7 +72,7 @@ $.ajax({
           else{
             $.ajax({
              type: "PUT",
-             url: "http://192.168.1.107/api/nbEypJkH8KItw3APB3Ci2YIB6t48vW15j6qXBzpm/lights/1/state",
+             url: testURL,
              dataType: 'json',
              contentType: 'application/json',
              data:  JSON.stringify({"on": false}),
@@ -47,6 +85,7 @@ $.ajax({
 
       });//If button toggled
   });//DocumentReady
+
 
 
 //Return Light States
