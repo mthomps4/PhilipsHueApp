@@ -18,6 +18,6 @@ color: "#fff"
 
 demoWheel.watch(function(color) {
   console.log(color.hsv);
-  $("#selectedColor").css({backgroundColor: color.hexString});
+  $(".lightBulbSVG").css({fill: color.hexString});
   $("#colorBar").css({borderBottom: "2px solid " + color.hexString});
 });

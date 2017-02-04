@@ -10,32 +10,39 @@
     <link rel="stylesheet" href="main.css">
 
   </head>
-  <body>
-<div class="container">
-  <h1>Philips Hue Web App</h1>
-      <p>Added Jquery commands to test how light data worked.
-        <br> Will work on creating dynamics in Angular2 MVC</p>
-        <br>
-        <br>
+<body>
+      <div class="container">
+      <h1>Philips Hue Web App</h1>
+          <p>Added Jquery commands to test how light data worked.
+            <br> Will work on creating dynamics in Angular2 MVC</p>
+            <hr>
 
-        <h1>Stand Alone Test</h1>
-        <div id="colorBar">
-              <h3 id="testLightName">Light 1 Test </h3>
-              <label class="switch">
-                <input id="Test1" type="checkbox" checked>
-                <div class="slider"></div>
-              </label>
-        </div>
-        <!-- <input id="Test1" type="checkbox" checked data-toggle="toggle" data-size="large" data-onstyle="info" data-offstyle="danger"> -->
+            <h1>Stand Alone Test</h1>
 
-        <!-- <label class="switch">
-          <input id="Test1" type="checkbox" checked>
-          <div class="slider"></div>
-        </label> -->
-        <!-- <div id="selectedColor"></div> -->
+            <div id="colorBar">
+                  <h3 id="testLightName">Light 1 Test </h3>
 
-        <svg class="bulbSVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 370"><path class="bulbPath" d="M15 20.5c0 .276-.224.5-.5.5h-5c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h5c.276 0 .5.224.5.5zm-.5-2.5h-5c-.276 0-.5.224-.5.5s.224.5.5.5h5c.276 0 .5-.224.5-.5s-.224-.5-.5-.5zm-3.799 5.659c.19.216.465.341.752.341h1.094c.287 0 .562-.125.752-.341l1.451-1.659h-5.5l1.451 1.659zm8.299-16.925c0 4.164-3.75 6.98-3.75 10.266h-6.5c0-3.286-3.75-6.103-3.75-10.266 0-4.343 3.498-6.734 6.996-6.734 3.502 0 7.004 2.394 7.004 6.734zm-7.719-3.015l-.219-1.177c-2.017.373-3.258 1.851-3.517 3.846l1.188.154c.116-.9.602-2.463 2.548-2.823z"/></svg></div>
-https://css-tricks.com/scale-svg/
+            <div> <!-- Flex Together Div -->
+                  <label class="switch">
+                    <input id="Test1" type="checkbox" checked>
+                    <div class="slider"></div>
+                  </label>
+          <!-- PhilipsIconPack SVG -->
+                  <svg class="lightBulbSVG" version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                  	 x="0px" y="0px" viewBox="0 0 24 24.004" xml:space="preserve">
+                  <g>
+                  	<path d="M15.016,17.984c0,0,0.953-6.403,1.934-9.972c-1.686,0.442-3.859,0.517-5.109,0.517c-1.875,0-3.637-0.157-4.778-0.409
+                  		C8.03,11.684,8.984,18,8.984,18S9.121,19,10,19h4C14,19,14.74,18.944,15.016,17.984z"/>
+                  	<path d="M5.817,1.326C4.242,2.329,5.935,5.324,6.674,6.892C6.69,6.928,6.706,6.962,6.721,6.995
+                  		c1.775,0.625,7.973,0.848,10.629-0.154c0.009-0.018,0.018-0.037,0.027-0.056c0.761-1.594,2.347-4.479,0.806-5.46
+                  		C16.487,0.246,13.76,0.001,12.013,0h-0.027C10.241,0.001,7.512,0.246,5.817,1.326z"/>
+                  	<path d="M13.011,23C14.031,23,14,22,14,22v-2h-4v2c0,0-0.042,1,0.979,1c0,0,0.002,1.004,1.001,1.004h0.034
+                  		C13.013,24.004,13.011,23,13.011,23z"/>
+                  </g>
+                  </svg>
+          </div>
+        </div> <!-- Color Bar --> 
+
         <div class=centerFlex>
           <div id="colorWheelDemo"></div>
         </div>
@@ -55,145 +62,11 @@ https://css-tricks.com/scale-svg/
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Test API Scripts  -->
+<script src="app.test.js"></script>
 <!-- Color Wheel -->
 <script src="iro.min.js"></script>
 <script src="app.colorwheel.js"></script>
 
-
-<!-- Test API Scripts  -->
-  <script>
-  "use strict";
-  //Make sure Light is off on page load
-  //Will look to add dynamic 'checks' later
-  $('#Test1').removeAttr('checked');
-  $.ajax({
-       type: "PUT",
-       url: "http://192.168.1.107/api/nbEypJkH8KItw3APB3Ci2YIB6t48vW15j6qXBzpm/lights/1/state",
-       dataType: 'json',
-       contentType: 'application/json',
-       data:  JSON.stringify({"on": false}),
-       success: function(data, response){
-         console.log(response);
-         console.log("turning Test1 Off!");
-       }
-    });
-
-    //Stand Alone Test
-    $(document).ready(function() {
-        $('#Test1').change(function() {
-            if($(this).is(":checked")) {
-                $.ajax({
-                 type: "PUT",
-                 url: "http://192.168.1.107/api/nbEypJkH8KItw3APB3Ci2YIB6t48vW15j6qXBzpm/lights/1/state",
-                 dataType: 'json',
-                 contentType: 'application/json',
-                 data:  JSON.stringify({"on": true}),
-                 success: function(data, response){
-                   console.log(response);
-                   console.log("turning Test1 ON!");
-                 }
-              });
-            }
-
-            else{
-              $.ajax({
-               type: "PUT",
-               url: "http://192.168.1.107/api/nbEypJkH8KItw3APB3Ci2YIB6t48vW15j6qXBzpm/lights/1/state",
-               dataType: 'json',
-               contentType: 'application/json',
-               data:  JSON.stringify({"on": false}),
-               success: function(data, response){
-                 console.log(response);
-                 console.log("turning Test1 Off!");
-               }
-            });
-          }//Else
-
-        });//If button toggled
-    });//DocumentReady
-
-
-//Return Light States
-$("#getData").click(function(){
-  $("#data").empty();
-  $.ajax({
-   type: "GET",
-   url: "http://192.168.1.107/api/nbEypJkH8KItw3APB3Ci2YIB6t48vW15j6qXBzpm/lights/",
-   dataType: 'json',
-   contentType: 'application/json',
-   success: function(data, response){
-     $.each(data, function(key, value){
-          $("#data").append("<h3>" + key + "</h3>");
-          var str = JSON.stringify(value);
-          $("#data").append("<h3>" + value['name'] + "</h3>");
-          $("#data").append(str);
-          $("#data").append("<br><br>");
-          console.log(str);
-     });
-   }//success
- })
-});
-
-//Dynamic Load Test
-function getLights() {
-  $("#getLights").empty();
-    $.ajax({
-         type: "GET",
-         url: "http://192.168.1.107/api/nbEypJkH8KItw3APB3Ci2YIB6t48vW15j6qXBzpm/lights/",
-         dataType: 'json',
-         contentType: 'application/json',
-         success: function(data, response){
-           response = JSON.stringify(data);
-
-
-           $.each(data, function(key, value){
-             var checked = "";
-             if(value['state']['on'] == true){
-               checked="checked ";
-             }
-             $("#getLights").append(
-               "<h1>"+key + value['name']+"</h1>" +
-                `<label class="switch">`+
-                  `<input id="Light`+key+`" type="checkbox"` + checked +`onchange="changeLightState(`+key+`)">` +
-                  `<div class="slider"></div></label>`
-              );
-              console.log("Light"+key+" state ON = "+ value['state']['on']);
-           });
-         }//Success
-      });//AJAX
-  };//getLights
-
-  //IF ELSE LIGHT SWITCH AJAX
-function changeLightState(key){
-  var i = key;
-  console.log(i);
-    if($("#Light"+i).is(":checked")) {
-      console.log("checked");
-      $.ajax({
-        type: "PUT",
-        url: "http://192.168.1.107/api/nbEypJkH8KItw3APB3Ci2YIB6t48vW15j6qXBzpm/lights/"+i+"/state",
-        dataType: 'json',
-        contentType: 'application/json',
-        data:  JSON.stringify({"on": true}),
-        success: function(data, response){
-          console.log("Turning ON");
-        }
-      });
-    }//IF
-    else{
-      $.ajax({
-        type: "PUT",
-        url: "http://192.168.1.107/api/nbEypJkH8KItw3APB3Ci2YIB6t48vW15j6qXBzpm/lights/"+i+"/state",
-        dataType: 'json',
-        contentType: 'application/json',
-        data:  JSON.stringify({"on": false}),
-        success: function(data, response){
-          console.log("Somethings UP");
-        }
-      });
-    }//Else
-  }//changeLightState
-
-   </script>
   </body>
 </html>
