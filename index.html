@@ -8,9 +8,72 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
-
+    <!-- JQUERY  -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   </head>
 <body>
+
+
+
+  <div>
+  <h1>UPNP TEST</h1>
+  <button id="UPNP">Get Bridge IP</button>
+  <div id="UPNPResponse"></div>
+  <script src="app.getBridgeIP.js"></script>
+<hr>
+
+<button id="bridgeAPI">Talk to Bridge</button>
+<div id="bridgeResponse"></div>
+
+<script>
+var username = "";
+$("#bridgeAPI").click(function(){
+  $("#bridgeResponse").empty();
+  var bridgeURL = "";
+  bridgeURL = "http://" + bridgeIP + "/api";
+
+  $("#bridgeResponse").append(
+    "<h1> Bridge URL: " + bridgeURL + "</h1>"
+  );
+
+  $.ajax({
+    type: "POST",
+    url: bridgeURL,
+    dataType: 'json',
+    contentType: 'application/json',
+    data:  JSON.stringify({"devicetype": "testing"})
+  }).done(function(data, response){
+    if(data[0].error){
+      $("#bridgeResponse").append(
+        "<h3> Error Type: " + data[0].error.type + "<h3>",
+        "<h3> Error Description: " + data[0].error.description + "<h3>"
+      );
+      console.log("Error Type: " + data[0].error.type);
+      console.log("Error Description: " + data[0].error.description);
+    }else{
+      console.log("You made it!");
+      console.log(data);
+      console.log(data[0].success);
+      username = data[0].success.username;
+      console.log(username);
+      $("#bridgeResponse").append(
+        "<h3> username: " + data[0].success.username + "<h3>"
+      );
+    }
+  });
+
+
+
+});
+</script>
+
+
+  </div>
+  <br><br><br><br><br><br>
+  <hr>
+
+
+
       <div class="container">
       <h1>Philips Hue Web App</h1>
           <p>Added Jquery commands to test how light data worked.
@@ -41,7 +104,7 @@
                   </g>
                   </svg>
           </div>
-        </div> <!-- Color Bar --> 
+        </div> <!-- Color Bar -->
 
         <div class=centerFlex>
           <div id="colorWheelDemo"></div>
