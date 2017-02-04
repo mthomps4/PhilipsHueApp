@@ -6,10 +6,10 @@ $bridgeURL = $_POST['bridgeURL'];
 $username = $_POST['username'];
 
 $text =
-"{" .
-  '"bridgeIP": ' . '"' . $bridgeIP . '"' . "," .
-  '"bridgeURL": ' . '"' .  $bridgeURL . '"' .  "," .
-  '"username": ' . '"' .  $username . '"' .
+"{ \n" .
+  '"bridgeIP": ' . '"' . $bridgeIP . '"' . ",\n" .
+  '"bridgeURL": ' . '"' .  $bridgeURL . '"' .  ",\n" .
+  '"username": ' . '"' .  $username . '"' . "\n" .
 "}";
 
 fwrite($myfile, $text);
