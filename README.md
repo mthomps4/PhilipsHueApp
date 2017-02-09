@@ -6,12 +6,13 @@ Testing with task lighting in current shop space. (1 overhead, 1 task light, 1 f
 [Philips Hue Concepts](https://developers.meethue.com/documentation/core-concepts)
 
 ## Plans
+To see the mockup plans view mockup.md
 
 ### Create Developer User
 - bridgeIP/debug/clip.html
 - bridge/api
 - Body: {"devicetype": "my_hue_app#browser username"}
-- Press Button first 
+- Press Button first
 
 #### Start
 - [ ] Find Bridge using UPNP SSDP

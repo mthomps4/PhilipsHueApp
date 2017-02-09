@@ -1,10 +1,81 @@
 body{
-  background-color:black;
-  color:white;
+background:black;
+color:white;
 }
 
 button, input[type="button"]{
   color:black;
+}
+
+ul{
+  text-decoration: none;
+  list-style: none;
+}
+
+.brandContainer{
+  height:72px;
+  background:white;
+}
+
+.brandLink{
+  height:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+}
+
+.appContainer{
+  display:flex;
+  height: 90vh;
+  margin:0 2em;
+}
+
+.registerFlex{
+  display:flex;
+  flex-direction:column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+h3.registerFlexItem{
+  color:white;
+}
+
+input.registerFlexItem{
+  width:100%;
+  height:48px;
+  background:teal;
+  color:white;
+}
+
+.bridgeLinkSVG{
+  width:200px;
+  height:200px;
+  background-image: url('/3rdParty/PhilipsIconPack/Push-link/SVG/pushlink_bridgev2.svg');
+  background-repeat: no-repeat;
+}
+
+.bottomFlexNav{
+  display:flex;
+  justify-content: space-around;
+  padding:0;
+  margin:0;
+  background: white;
+  height:72px;
+}
+
+.bottomFlexNav a{
+  flex-grow: 1;
+  height:inherit;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottomFlexNav a:hover, .bottomFlexNav a.active{
+  background:blue;
+  color:white;
 }
 
 #colorBar{
@@ -79,9 +150,4 @@ input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
-}
-
-.centerFlex{
-  display:flex;
-  justify-content:center;
 }
