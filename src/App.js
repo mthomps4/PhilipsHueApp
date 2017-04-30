@@ -1,14 +1,20 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import LinkBridge from './components/linkbridge';
 
-// CSS
-import './css/main.css';
+class App extends Component {
+  render() {
+    return (
+        <div className="App">
+          <div className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h2>3Wire Smart Light System</h2>
+          </div>
+          <LinkBridge />
+        </div>
+    );
+  }
+}
 
-//Routes
-import Routes from './routes.js';
-
-// Render
-render(
-  Routes,
-  document.getElementById('application')
-);
+export default App;
